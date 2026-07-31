@@ -17,7 +17,9 @@
   --border-strong: #d2ccc1;
   --fg: #1a181c;
   --fg-muted: #56535c;
-  --fg-subtle: #85818c;
+  /* Darkened from #85818c to clear WCAG AA (4.5:1) on --bg; it carries real
+     text like dates and locations, not just decoration. */
+  --fg-subtle: #6e6b76;
   --accent: #9c5d0b;
   --accent-hover: #7d4a08;
   --accent-soft: #fbf1e0;
@@ -32,7 +34,8 @@
   --border-strong: #35353d;
   --fg: #f2f0ee;
   --fg-muted: #a5a1ac;
-  --fg-subtle: #78747f;
+  /* Lightened from #78747f for the same AA reason as the light theme. */
+  --fg-subtle: #8b8794;
   --accent: #f0a94e;
   --accent-hover: #f7bd70;
   --accent-soft: #241a0d;

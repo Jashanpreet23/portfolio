@@ -31,13 +31,16 @@ export function Hero() {
         </Reveal>
 
         <Reveal delay={120}>
-          <p className="mt-4 text-xl text-fg-muted sm:text-2xl">
-            {profile.title}
-            <span aria-hidden="true" className="mx-2 text-fg-subtle">
-              ·
-            </span>
-            <span className="text-fg-subtle">{profile.location}</span>
-          </p>
+          {/* Stacks on narrow screens so the job title never breaks mid-phrase. */}
+          <div className="mt-4 flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-2">
+            <p className="text-xl text-fg-muted sm:text-2xl">{profile.title}</p>
+            <p className="text-base text-fg-subtle sm:text-2xl">
+              <span aria-hidden="true" className="hidden sm:inline">
+                ·{" "}
+              </span>
+              {profile.location}
+            </p>
+          </div>
         </Reveal>
 
         <Reveal delay={180}>
