@@ -18,7 +18,7 @@ export const content: SiteContent = {
     location: "Melbourne, VIC, Australia",
     email: "jashanpreetsingh230106@gmail.com",
     phone: "+61 468 370 723",
-    siteUrl: "https://jashanpreetsingh.dev",
+    siteUrl: "https://jashanpreet.vercel.app",
     resumePath: "/Jashanpreet_Singh_Resume.pdf",
     availability: "Graduating Nov 2026 · Open to 2027 graduate roles",
     intro:
