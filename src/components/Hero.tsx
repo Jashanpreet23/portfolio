@@ -7,7 +7,6 @@ export function Hero() {
 
   return (
     <section id="top" className="relative overflow-hidden">
-      {/* Soft accent wash behind the hero. Decorative only. */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0 h-[420px] bg-[radial-gradient(60%_100%_at_50%_0%,var(--accent-soft),transparent_70%)]"
@@ -31,7 +30,6 @@ export function Hero() {
         </Reveal>
 
         <Reveal delay={120}>
-          {/* Stacks on narrow screens so the job title never breaks mid-phrase. */}
           <div className="mt-4 flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-2">
             <p className="text-xl text-fg-muted sm:text-2xl">{profile.title}</p>
             <p className="text-base text-fg-subtle sm:text-2xl">
@@ -65,9 +63,6 @@ export function Hero() {
             >
               Download resume
             </a>
-            {/* Scrolls to the contact section rather than firing a mailto:.
-                A mailto does nothing visible when the visitor has no mail
-                client configured, which makes the button look broken. */}
             <a
               href="#contact"
               className="rounded-md px-3 py-2.5 text-sm font-medium text-fg-muted transition-colors hover:text-accent"

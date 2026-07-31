@@ -1,9 +1,5 @@
 import { content } from "@/content/profile";
 
-/**
- * schema.org Person markup. Search engines use this to render richer results
- * for a name query, which is the search that matters most for a portfolio.
- */
 export function personJsonLd(): string {
   const { profile, education, experience } = content;
   const currentRole = experience[0];

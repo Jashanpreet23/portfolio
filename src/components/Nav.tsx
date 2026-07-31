@@ -18,7 +18,6 @@ export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Highlights the nav link for whichever section is currently in view.
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -46,7 +45,6 @@ export function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Closing on Escape keeps the mobile menu keyboard-dismissable.
   useEffect(() => {
     if (!menuOpen) return;
     const onKeyDown = (event: KeyboardEvent) => {

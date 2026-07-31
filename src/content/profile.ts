@@ -1,16 +1,7 @@
 import type { SiteContent } from "./types";
 
-/**
- * Every word on the site comes from this file.
- *
- * Update the site by editing here — no component contains copy. Change
- * `siteUrl` to the real domain once deployed so SEO metadata and JSON-LD
- * point at the right place.
- *
- * Note: the street address from the resume is deliberately omitted. A resume
- * goes to named employers; a website is crawled by anyone. City and state are
- * all a recruiter needs to judge location.
- */
+// All site copy lives here. Street address is left off on purpose - a resume
+// goes to named employers, a website is crawled by anyone.
 export const content: SiteContent = {
   profile: {
     name: "Jashanpreet Singh",

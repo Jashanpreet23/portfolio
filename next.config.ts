@@ -1,12 +1,6 @@
 import type { NextConfig } from "next";
 
-/**
- * `output: "export"` emits a fully static site to `out/`, so this deploys to
- * Vercel, Netlify, GitHub Pages, or any static host without a Node server.
- *
- * If you host under a repo subpath (e.g. github.io/portfolio), set
- * BASE_PATH=/portfolio at build time.
- */
+// Set BASE_PATH=/repo-name when hosting under a subpath (GitHub Pages).
 const basePath = process.env.BASE_PATH ?? "";
 
 const nextConfig: NextConfig = {
@@ -14,7 +8,7 @@ const nextConfig: NextConfig = {
   basePath,
   trailingSlash: true,
   images: {
-    // The static export target has no image optimization server.
+    // No optimization server on a static export.
     unoptimized: true,
   },
   env: {

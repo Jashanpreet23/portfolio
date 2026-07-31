@@ -5,8 +5,7 @@ import { useEffect, useState } from "react";
 type Theme = "light" | "dark";
 
 export function ThemeToggle() {
-  // Starts null so the button renders inert until the client knows the real
-  // theme — the inline script in layout.tsx has already set it on <html>.
+  // null until the client reads what layout.tsx already set on <html>.
   const [theme, setTheme] = useState<Theme | null>(null);
 
   useEffect(() => {
@@ -20,7 +19,7 @@ export function ThemeToggle() {
     try {
       localStorage.setItem("theme", next);
     } catch {
-      // Private browsing can reject writes; the theme still applies for this page.
+      // Private browsing can reject writes.
     }
     setTheme(next);
   }

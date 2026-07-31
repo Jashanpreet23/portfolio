@@ -4,23 +4,17 @@ import { useEffect, useState } from "react";
 
 interface CopyButtonProps {
   value: string;
-  /** Describes what is being copied, for screen readers. */
   label: string;
 }
 
-/**
- * Copies a value to the clipboard.
- *
- * This exists because `mailto:` and `tel:` links silently do nothing when the
- * visitor has no mail or phone handler configured — copying always works.
- */
+// mailto:/tel: links do nothing if there's no handler set up. Copying works
+// regardless.
 export function CopyButton({ value, label }: CopyButtonProps) {
   const [copied, setCopied] = useState(false);
   const [supported, setSupported] = useState(false);
 
   useEffect(() => {
-    // navigator.clipboard is undefined on insecure origins, so only offer the
-    // button where it can actually succeed.
+    // Undefined on insecure origins.
     setSupported(
       typeof navigator !== "undefined" && Boolean(navigator.clipboard),
     );
@@ -39,7 +33,7 @@ export function CopyButton({ value, label }: CopyButtonProps) {
       await navigator.clipboard.writeText(value);
       setCopied(true);
     } catch {
-      // Permission can be denied; leaving the state alone keeps the label honest.
+      // Permission denied - leave the label as it is.
     }
   }
 

@@ -64,10 +64,8 @@ export const viewport: Viewport = {
   ],
 };
 
-/**
- * Runs before first paint so the correct theme is on <html> immediately —
- * without this the page flashes light before a dark preference applies.
- */
+// Runs before first paint, otherwise the page flashes light before a dark
+// preference kicks in.
 const themeScript = `
 (function () {
   try {

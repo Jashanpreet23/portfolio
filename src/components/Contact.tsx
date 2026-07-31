@@ -47,8 +47,6 @@ export function Contact() {
               </dd>
             </div>
 
-            {/* Driven by profile.socials so a new network only has to be
-                added in one place. Email has its own entry above. */}
             {profile.socials
               .filter((social) => !social.href.startsWith("mailto:"))
               .map((social) => (

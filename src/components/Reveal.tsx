@@ -4,18 +4,12 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 
 interface RevealProps {
   children: ReactNode;
-  /** Stagger in milliseconds, for revealing a list one item after another. */
   delay?: number;
   className?: string;
 }
 
-/**
- * Fades content in as it scrolls into view.
- *
- * The `reveal` class — which is what hides the element — is only attached once
- * the effect has run, so with JavaScript disabled or before hydration the
- * content renders plainly visible instead of being stuck at opacity 0.
- */
+// The `reveal` class is what hides the element, so it's only added after the
+// effect runs - otherwise content stays at opacity 0 with JS disabled.
 export function Reveal({ children, delay = 0, className = "" }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [animatable, setAnimatable] = useState(false);

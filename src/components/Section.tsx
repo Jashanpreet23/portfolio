@@ -3,10 +3,8 @@ import { Reveal } from "./Reveal";
 
 interface SectionProps {
   id: string;
-  /** Small monospace label above the heading, e.g. "01 / Projects". */
   index: string;
   title: string;
-  /** Optional supporting line under the heading. */
   lede?: string;
   children: ReactNode;
 }
