@@ -65,8 +65,11 @@ export function Hero() {
             >
               Download resume
             </a>
+            {/* Scrolls to the contact section rather than firing a mailto:.
+                A mailto does nothing visible when the visitor has no mail
+                client configured, which makes the button look broken. */}
             <a
-              href={`mailto:${profile.email}`}
+              href="#contact"
               className="rounded-md px-3 py-2.5 text-sm font-medium text-fg-muted transition-colors hover:text-accent"
             >
               Get in touch

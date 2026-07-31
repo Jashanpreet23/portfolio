@@ -69,6 +69,8 @@ export const content: SiteContent = {
         "GitHub Actions",
         "Render",
       ],
+      repoAccess:
+        "Source is in a private university organisation repository — happy to share it or walk through the code on request.",
       featured: true,
     },
     {
@@ -98,6 +100,8 @@ export const content: SiteContent = {
         "MUI",
         "Git",
       ],
+      repoAccess:
+        "Client project in a private repository — code can be provided on request, subject to the client's approval.",
       featured: true,
     },
     {

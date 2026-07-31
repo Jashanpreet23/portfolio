@@ -62,15 +62,28 @@ src/
 
 The build produces a static `out/` directory, so any static host works.
 
-**Vercel** — import the repo; it detects Next.js and needs no configuration.
+**Vercel** (easiest) — push to GitHub, import the repo at vercel.com, accept
+the detected settings. Every push to `main` redeploys. Free, and you get a
+`*.vercel.app` domain immediately.
+
+**GitHub Pages** — [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)
+is already set up. Push the repo, then in **Settings → Pages** set **Source**
+to **GitHub Actions**. The workflow typechecks, lints, builds, and publishes on
+every push to `main`, and passes the correct `BASE_PATH` automatically so assets
+resolve under `username.github.io/<repo>`.
 
 **Netlify** — build command `npm run build`, publish directory `out`.
 
-**GitHub Pages** — hosted under `username.github.io/portfolio`, the site needs
-to know its subpath:
+Building for a subpath by hand, if you ever need to:
 
 ```bash
 BASE_PATH=/portfolio npm run build
 ```
 
-Then publish `out/`. A custom domain at the root needs no `BASE_PATH`.
+A custom domain at the root needs no `BASE_PATH`.
+
+### After the first deploy
+
+Set `profile.siteUrl` in [`src/content/profile.ts`](src/content/profile.ts) to
+the real URL. It feeds the page metadata, OpenGraph tags, sitemap and JSON-LD,
+which is what search engines read.

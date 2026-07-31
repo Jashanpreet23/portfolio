@@ -55,6 +55,12 @@ export interface Project {
   /** Technologies, ordered most to least significant. */
   stack: string[];
   links?: { label: string; href: string }[];
+  /**
+   * Shown where a repo link would go, for work whose source cannot be made
+   * public — university org repos, client work. Say so plainly rather than
+   * leaving a recruiter wondering why there is no code to look at.
+   */
+  repoAccess?: string;
   /** Marks the project as worth showing first. */
   featured: boolean;
 }

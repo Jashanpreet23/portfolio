@@ -1,5 +1,6 @@
 import { content } from "@/content/profile";
 import { withBasePath } from "@/lib/paths";
+import { CopyButton } from "./CopyButton";
 import { Reveal } from "./Reveal";
 import { Section } from "./Section";
 
@@ -20,13 +21,14 @@ export function Contact() {
               <dt className="font-mono text-xs uppercase tracking-[0.18em] text-fg-subtle">
                 Email
               </dt>
-              <dd className="mt-2">
+              <dd className="mt-2 flex flex-wrap items-center gap-2">
                 <a
                   href={`mailto:${profile.email}`}
                   className="break-all text-sm text-accent transition-colors hover:text-accent-hover"
                 >
                   {profile.email}
                 </a>
+                <CopyButton value={profile.email} label="email address" />
               </dd>
             </div>
 
@@ -34,13 +36,14 @@ export function Contact() {
               <dt className="font-mono text-xs uppercase tracking-[0.18em] text-fg-subtle">
                 Phone
               </dt>
-              <dd className="mt-2">
+              <dd className="mt-2 flex flex-wrap items-center gap-2">
                 <a
                   href={`tel:${profile.phone.replace(/\s/g, "")}`}
                   className="text-sm text-accent transition-colors hover:text-accent-hover"
                 >
                   {profile.phone}
                 </a>
+                <CopyButton value={profile.phone} label="phone number" />
               </dd>
             </div>
 
