@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+/*
+ * Theme is driven entirely by `data-theme` on <html>. The inline script in
+ * layout.tsx resolves the system preference before first paint and always
+ * writes an explicit value, so there is a single source of truth and no
+ * flash of the wrong theme.
+ */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root,
+[data-theme="light"] {
+  --bg: #faf9f7;
+  --surface: #ffffff;
+  --surface-2: #f3f1ed;
+  --border: #e4e0d9;
+  --border-strong: #d2ccc1;
+  --fg: #1a181c;
+  --fg-muted: #56535c;
+  --fg-subtle: #85818c;
+  --accent: #9c5d0b;
+  --accent-hover: #7d4a08;
+  --accent-soft: #fbf1e0;
+  --shadow: 0 1px 2px rgb(26 24 28 / 0.04), 0 8px 24px -12px rgb(26 24 28 / 0.12);
+}
+
+[data-theme="dark"] {
+  --bg: #0b0b0d;
+  --surface: #131316;
+  --surface-2: #1a1a1f;
+  --border: #26262c;
+  --border-strong: #35353d;
+  --fg: #f2f0ee;
+  --fg-muted: #a5a1ac;
+  --fg-subtle: #78747f;
+  --accent: #f0a94e;
+  --accent-hover: #f7bd70;
+  --accent-soft: #241a0d;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 8px 24px -12px rgb(0 0 0 / 0.6);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-subtle: var(--fg-subtle);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-mono-face), ui-monospace, "SF Mono", Menlo, monospace;
+
+  --shadow-card: var(--shadow);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Keeps anchored headings clear of the sticky nav. */
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* A visible, consistent focus ring everywhere rather than per-component. */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--bg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer utilities {
+  /* Scroll-reveal. Elements start hidden only when JS is running; the
+     `.reveal` class is applied by the Reveal component, so content is
+     always visible with JS disabled. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+      opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal[data-visible="true"] {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
