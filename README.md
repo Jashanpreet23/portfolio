@@ -58,23 +58,21 @@ src/
   entirely under `prefers-reduced-motion`.
 - **Colour** meets WCAG AA contrast in both themes.
 
+## CI
+
+[`.github/workflows/ci.yml`](.github/workflows/ci.yml) runs `typecheck`, `lint`
+and `build` on every push to `main` and on pull requests. It does not deploy —
+Vercel handles that.
+
 ## Deploying
 
-The build produces a static `out/` directory, so any static host works.
+Live at **https://jashanpreet.vercel.app**, deployed from Vercel, which
+redeploys automatically on every push to `main`.
 
-**Vercel** (easiest) — push to GitHub, import the repo at vercel.com, accept
-the detected settings. Every push to `main` redeploys. Free, and you get a
-`*.vercel.app` domain immediately.
-
-**GitHub Pages** — [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)
-is already set up. Push the repo, then in **Settings → Pages** set **Source**
-to **GitHub Actions**. The workflow typechecks, lints, builds, and publishes on
-every push to `main`, and passes the correct `BASE_PATH` automatically so assets
-resolve under `username.github.io/<repo>`.
-
-**Netlify** — build command `npm run build`, publish directory `out`.
-
-Building for a subpath by hand, if you ever need to:
+The build produces a static `out/` directory, so any static host works if you
+ever move. Netlify wants build command `npm run build` and publish directory
+`out`. For GitHub Pages you would need to set `BASE_PATH` so assets resolve
+under the repo subpath:
 
 ```bash
 BASE_PATH=/portfolio npm run build
@@ -82,8 +80,6 @@ BASE_PATH=/portfolio npm run build
 
 A custom domain at the root needs no `BASE_PATH`.
 
-### After the first deploy
-
-Set `profile.siteUrl` in [`src/content/profile.ts`](src/content/profile.ts) to
-the real URL. It feeds the page metadata, OpenGraph tags, sitemap and JSON-LD,
-which is what search engines read.
+If the URL changes, update `profile.siteUrl` in
+[`src/content/profile.ts`](src/content/profile.ts) — it feeds the page
+metadata, OpenGraph tags, sitemap and JSON-LD.
