@@ -47,21 +47,27 @@ export function Contact() {
               </dd>
             </div>
 
-            <div>
-              <dt className="font-mono text-xs uppercase tracking-[0.18em] text-fg-subtle">
-                GitHub
-              </dt>
-              <dd className="mt-2">
-                <a
-                  href="https://github.com/Jashanpreet23"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-accent transition-colors hover:text-accent-hover"
-                >
-                  github.com/Jashanpreet23
-                </a>
-              </dd>
-            </div>
+            {/* Driven by profile.socials so a new network only has to be
+                added in one place. Email has its own entry above. */}
+            {profile.socials
+              .filter((social) => !social.href.startsWith("mailto:"))
+              .map((social) => (
+                <div key={social.href}>
+                  <dt className="font-mono text-xs uppercase tracking-[0.18em] text-fg-subtle">
+                    {social.label}
+                  </dt>
+                  <dd className="mt-2">
+                    <a
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="break-all text-sm text-accent transition-colors hover:text-accent-hover"
+                    >
+                      {social.handle}
+                    </a>
+                  </dd>
+                </div>
+              ))}
 
             <div>
               <dt className="font-mono text-xs uppercase tracking-[0.18em] text-fg-subtle">

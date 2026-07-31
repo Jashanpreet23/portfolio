@@ -7,9 +7,10 @@
  */
 
 export interface SocialLink {
+  /** Name of the network, used as the link text in the footer. */
   label: string;
   href: string;
-  /** Short handle shown next to the label, e.g. "Jashanpreet23". */
+  /** Display form of the URL, e.g. "github.com/Jashanpreet23". */
   handle: string;
 }
 

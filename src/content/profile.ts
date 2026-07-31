@@ -32,7 +32,12 @@ export const content: SiteContent = {
       {
         label: "GitHub",
         href: "https://github.com/Jashanpreet23",
-        handle: "Jashanpreet23",
+        handle: "github.com/Jashanpreet23",
+      },
+      {
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/in/jashanpreetsingh23/",
+        handle: "linkedin.com/in/jashanpreetsingh23",
       },
       {
         label: "Email",
@@ -101,7 +106,7 @@ export const content: SiteContent = {
         "Git",
       ],
       repoAccess:
-        "Client project in a private repository — code can be provided on request, subject to the client's approval.",
+        "Client project in a private repository — code can be provided on request",
       featured: true,
     },
     {
