@@ -168,6 +168,8 @@ export const content: SiteContent = {
         "docker-compose",
         "GitHub Actions",
         "CI/CD",
+        "AWS",
+        "Azure",
         "Render",
         "Firebase",
       ],
