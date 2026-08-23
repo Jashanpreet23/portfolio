@@ -4,7 +4,7 @@ export function ProjectCard({ project }: { project: Project }) {
   return (
     <article
       id={project.slug}
-      className="scroll-mt-24 rounded-xl border border-border bg-surface p-6 shadow-card transition-colors hover:border-border-strong sm:p-8"
+      className="project-card scroll-mt-24 rounded-xl border border-border bg-surface p-6 shadow-card transition-colors hover:border-border-strong sm:p-8"
     >
       <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
         <h3 className="text-xl font-semibold tracking-tight text-fg sm:text-2xl">

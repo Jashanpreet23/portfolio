@@ -1,6 +1,7 @@
 import { content } from "@/content/profile";
 import { Reveal } from "./Reveal";
 import { Section } from "./Section";
+import { TiltCard } from "./TiltCard";
 
 export function About() {
   const { profile, education } = content;
@@ -20,40 +21,42 @@ export function About() {
         </Reveal>
 
         <Reveal delay={80}>
-          <div className="rounded-xl border border-border bg-surface p-6 shadow-card">
-            <h3 className="font-mono text-xs uppercase tracking-[0.18em] text-fg-subtle">
-              Education
-            </h3>
-            <ul className="mt-5 space-y-5">
-              {education.map((credential) => (
-                <li key={credential.qualification}>
-                  <p className="text-sm font-medium text-fg">
-                    {credential.qualification}
-                  </p>
-                  {credential.institution ? (
-                    <p className="mt-0.5 text-sm text-fg-muted">
-                      {credential.institution}
+          <TiltCard className="rounded-xl">
+            <div className="depth-panel rounded-xl border border-border bg-surface p-6 shadow-card">
+              <h3 className="font-mono text-xs uppercase tracking-[0.18em] text-fg-subtle">
+                Education
+              </h3>
+              <ul className="mt-5 space-y-5">
+                {education.map((credential) => (
+                  <li key={credential.qualification}>
+                    <p className="text-sm font-medium text-fg">
+                      {credential.qualification}
                     </p>
-                  ) : null}
-                  {credential.detail ? (
-                    <p className="mt-0.5 text-sm text-fg-muted">
-                      {credential.detail}
+                    {credential.institution ? (
+                      <p className="mt-0.5 text-sm text-fg-muted">
+                        {credential.institution}
+                      </p>
+                    ) : null}
+                    {credential.detail ? (
+                      <p className="mt-0.5 text-sm text-fg-muted">
+                        {credential.detail}
+                      </p>
+                    ) : null}
+                    <p className="mt-1 font-mono text-xs text-fg-subtle">
+                      {credential.period}
                     </p>
-                  ) : null}
-                  <p className="mt-1 font-mono text-xs text-fg-subtle">
-                    {credential.period}
-                  </p>
-                </li>
-              ))}
-            </ul>
+                  </li>
+                ))}
+              </ul>
 
-            <hr className="my-6 border-border" />
+              <hr className="my-6 border-border" />
 
-            <h3 className="font-mono text-xs uppercase tracking-[0.18em] text-fg-subtle">
-              Based in
-            </h3>
-            <p className="mt-3 text-sm text-fg-muted">{profile.location}</p>
-          </div>
+              <h3 className="font-mono text-xs uppercase tracking-[0.18em] text-fg-subtle">
+                Based in
+              </h3>
+              <p className="mt-3 text-sm text-fg-muted">{profile.location}</p>
+            </div>
+          </TiltCard>
         </Reveal>
       </div>
     </Section>

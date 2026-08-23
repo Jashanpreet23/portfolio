@@ -13,7 +13,7 @@ export function Experience() {
       <div className="space-y-10">
         {content.experience.map((role, i) => (
           <Reveal key={`${role.company}-${role.position}`} delay={i * 80}>
-            <div className="rounded-xl border border-border bg-surface p-6 shadow-card sm:p-8">
+            <div className="depth-panel rounded-xl border border-border bg-surface p-6 shadow-card sm:p-8">
               <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                 <h3 className="text-xl font-semibold tracking-tight text-fg">
                   {role.position}

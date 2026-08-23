@@ -2,6 +2,7 @@ import { content } from "@/content/profile";
 import { ProjectCard } from "./ProjectCard";
 import { Reveal } from "./Reveal";
 import { Section } from "./Section";
+import { TiltCard } from "./TiltCard";
 
 export function Projects() {
   const featured = content.projects.filter((project) => project.featured);
@@ -17,7 +18,9 @@ export function Projects() {
       <div className="space-y-6">
         {featured.map((project, i) => (
           <Reveal key={project.slug} delay={i * 80}>
-            <ProjectCard project={project} />
+            <TiltCard>
+              <ProjectCard project={project} />
+            </TiltCard>
           </Reveal>
         ))}
       </div>
@@ -32,7 +35,9 @@ export function Projects() {
           <div className="mt-6 space-y-6">
             {others.map((project, i) => (
               <Reveal key={project.slug} delay={i * 80}>
-                <ProjectCard project={project} />
+                <TiltCard>
+                  <ProjectCard project={project} />
+                </TiltCard>
               </Reveal>
             ))}
           </div>

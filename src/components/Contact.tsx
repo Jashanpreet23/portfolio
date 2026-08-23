@@ -15,7 +15,7 @@ export function Contact() {
       lede="I am looking for a graduate software engineering role starting in 2027, and I am happy to talk about internships or part-time work before then."
     >
       <Reveal>
-        <div className="rounded-xl border border-border bg-surface p-6 shadow-card sm:p-8">
+        <div className="depth-panel contact-panel rounded-xl border border-border bg-surface p-6 shadow-card sm:p-8">
           <dl className="grid gap-6 sm:grid-cols-2">
             <div>
               <dt className="font-mono text-xs uppercase tracking-[0.18em] text-fg-subtle">
