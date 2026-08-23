@@ -1,16 +1,79 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
-const nodes = [
-  { label: "React", className: "scene-node scene-node-react" },
-  { label: "TypeScript", className: "scene-node scene-node-typescript" },
-  { label: "Node.js", className: "scene-node scene-node-node" },
-  { label: "SQL", className: "scene-node scene-node-sql" },
+const layers = [
+  {
+    index: "01",
+    title: "Frontend",
+    detail: "React · TypeScript",
+    className: "scene-layer-card scene-layer-frontend",
+  },
+  {
+    index: "02",
+    title: "API",
+    detail: "Node · GraphQL",
+    className: "scene-layer-card scene-layer-api",
+  },
+  {
+    index: "03",
+    title: "Data",
+    detail: "SQL · MongoDB",
+    className: "scene-layer-card scene-layer-data",
+  },
+  {
+    index: "04",
+    title: "Delivery",
+    detail: "Docker · CI/CD",
+    className: "scene-layer-card scene-layer-delivery",
+  },
 ];
+
+const particleCount = 14;
 
 export function HeroScene() {
   const stageRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    );
+    const compactLayout = window.matchMedia("(max-width: 639px)");
+    let animationFrame = 0;
+
+    function updateScrollDepth() {
+      const stage = stageRef.current;
+      if (!stage) return;
+
+      if (reducedMotion.matches || compactLayout.matches) {
+        stage.style.setProperty("--scene-scroll-near", "0px");
+        stage.style.setProperty("--scene-scroll-far", "0px");
+        return;
+      }
+
+      cancelAnimationFrame(animationFrame);
+      animationFrame = requestAnimationFrame(() => {
+        const bounds = stage.getBoundingClientRect();
+        const stageCentre = bounds.top + bounds.height / 2;
+        const viewportCentre = window.innerHeight / 2;
+        const progress = Math.max(
+          -1,
+          Math.min(1, (viewportCentre - stageCentre) / window.innerHeight),
+        );
+
+        stage.style.setProperty("--scene-scroll-near", `${progress * 34}px`);
+        stage.style.setProperty("--scene-scroll-far", `${progress * -18}px`);
+      });
+    }
+
+    updateScrollDepth();
+    window.addEventListener("scroll", updateScrollDepth, { passive: true });
+
+    return () => {
+      cancelAnimationFrame(animationFrame);
+      window.removeEventListener("scroll", updateScrollDepth);
+    };
+  }, []);
 
   function handlePointerMove(event: React.PointerEvent<HTMLDivElement>) {
     const stage = stageRef.current;
@@ -43,8 +106,24 @@ export function HeroScene() {
       onPointerMove={handlePointerMove}
       onPointerLeave={resetScene}
     >
+      <div className="scene-particles">
+        {Array.from({ length: particleCount }, (_, index) => (
+          <span key={index} />
+        ))}
+      </div>
       <div className="hero-grid-plane" />
       <div className="hero-world">
+        <svg
+          className="scene-system-map"
+          viewBox="0 0 600 420"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path d="M292 205C238 158 197 118 124 90" />
+          <path d="M308 205C368 153 416 119 491 92" />
+          <path d="M311 222C371 264 423 298 495 329" />
+          <path d="M289 222C233 269 190 301 113 330" />
+        </svg>
         <div className="scene-orbit scene-orbit-one" />
         <div className="scene-orbit scene-orbit-two" />
         <div className="scene-orbit scene-orbit-three" />
@@ -53,16 +132,22 @@ export function HeroScene() {
             <span>JS</span>
           </div>
         </div>
-        {nodes.map((node) => (
-          <div key={node.label} className={node.className}>
-            <span className="scene-node-dot" />
-            {node.label}
+        {layers.map((layer) => (
+          <div key={layer.title} className={layer.className}>
+            <div className="scene-layer-heading">
+              <span className="scene-layer-index">{layer.index}</span>
+              <span className="scene-layer-status">
+                <span /> live
+              </span>
+            </div>
+            <strong>{layer.title}</strong>
+            <p>{layer.detail}</p>
           </div>
         ))}
         <div className="scene-axis scene-axis-x" />
         <div className="scene-axis scene-axis-y" />
       </div>
-      <p className="scene-caption">FULL STACK / CLOUD / DATA</p>
+      <p className="scene-caption">SYSTEM ARCHITECTURE / 04 LAYERS</p>
     </div>
   );
 }

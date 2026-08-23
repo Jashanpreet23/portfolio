@@ -1,5 +1,21 @@
 import type { Project } from "@/content/types";
 
+function ProjectStack({ stack }: { stack: string[] }) {
+  return (
+    <div className="project-stack-visual" aria-hidden="true">
+      <span className="project-stack-caption">Core stack</span>
+      <div className="project-stack-deck">
+        {stack.slice(0, 3).map((technology) => (
+          <span key={technology} className="project-stack-layer">
+            <span />
+            {technology}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function ProjectCard({ project }: { project: Project }) {
   return (
     <article
@@ -24,11 +40,14 @@ export function ProjectCard({ project }: { project: Project }) {
         {project.summary}
       </p>
 
-      <div className="mt-5 rounded-lg border border-border bg-surface-2 px-4 py-3">
-        <p className="text-sm leading-relaxed text-fg-muted">
-          <span className="font-medium text-fg">My role: </span>
-          {project.role}
-        </p>
+      <div className="project-role-layout mt-5">
+        <div className="rounded-lg border border-border bg-surface-2 px-4 py-3">
+          <p className="text-sm leading-relaxed text-fg-muted">
+            <span className="font-medium text-fg">My role: </span>
+            {project.role}
+          </p>
+        </div>
+        <ProjectStack stack={project.stack} />
       </div>
 
       <h4 className="mt-6 font-mono text-xs uppercase tracking-[0.18em] text-fg-subtle">
