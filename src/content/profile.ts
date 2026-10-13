@@ -13,10 +13,10 @@ export const content: SiteContent = {
     resumePath: "/Jashanpreet_Singh_Resume.pdf",
     availability: "Graduating Nov 2026 · Open to 2027 graduate roles",
     intro:
-      "Computer Science student at RMIT building full-stack web applications with React, TypeScript, Node.js and SQL Server. I like the parts of the job most people skip — schema design, CI pipelines, and making sure the thing actually runs in production.",
+      "Computer Science student at RMIT building full-stack web applications with React, TypeScript, Node.js and SQL Server, and native iOS apps in SwiftUI. I like the parts of the job most people skip — schema design, CI pipelines, and making sure the thing actually runs in production.",
     about: [
       "I am finishing a Bachelor of Computer Science at RMIT University, majoring in Enterprise Systems Development, and graduating in November 2026. Most of what I know I learned by building: a multi-role venue-booking platform on a cloud SQL Server, a drone-risk assessment engine for an industry client, and database systems designed from the ER model up.",
-      "I am most comfortable across the stack. I have written React and TypeScript front-ends, Express and TypeORM REST APIs, GraphQL layers with live subscriptions, and T-SQL stored procedures — then containerised the result with Docker and put it behind a GitHub Actions pipeline so every push is type-checked, tested and built.",
+      "I am most comfortable across the stack. I have written React and TypeScript front-ends, Express and TypeORM REST APIs, GraphQL layers with live subscriptions, and T-SQL stored procedures — then containerised the result with Docker and put it behind a GitHub Actions pipeline so every push is type-checked, tested and built. Most recently I built ShiftPay, a native iOS app in SwiftUI that prices casual shifts against live Fair Work award rates.",
       "Alongside my degree I have spent two years as a Department Manager at McDonald's, leading a team of 25 and owning stock, rostering and month-end reporting. It is not a software job, but it taught me how to run a shift when things go wrong, coach people who are newer than me, and be accountable for numbers someone else reviews — which turns out to be most of what a team wants from a graduate.",
     ],
     socials: [
@@ -39,6 +39,37 @@ export const content: SiteContent = {
   },
 
   projects: [
+    {
+      slug: "shiftpay",
+      name: "ShiftPay",
+      kind: "iOS app · SwiftUI",
+      year: "2026",
+      context: "RMIT iPhone Software Engineering",
+      role: "Two-person team — I built the majority of the app, including the pay engine, the data and security layers and the custom SwiftUI layout.",
+      summary:
+        "An iPhone app for casual hospitality workers paid under penalty rates. Ordinary, evening, weekend and public-holiday hours are each paid at a different loading and the boundaries are easy to get wrong, so ShiftPay breaks a shift into its penalty bands and shows exactly what each one pays.",
+      highlights: [
+        "Wrote the pay engine, which walks a shift minute by minute and opens a new segment whenever the applicable penalty band changes — so a Sunday shift finishing at 2am is priced at Monday's rates for its final two hours with no special-casing.",
+        "Pulled live award rates from the Fair Work Commission's Modern Awards Pay Database and public holidays from Nager.Date, with on-device caching and a bundled fallback so the app works fully offline.",
+        "Persisted shifts with SwiftData behind a repository protocol, encrypting each row and holding the key in the Keychain, with an optional Firestore layer that mirrors saves without anything above it knowing which store is in use.",
+        "Built TimelineBandsLayout, a custom SwiftUI Layout that sizes each band proportionally to its hours while guaranteeing a readable minimum width — an HStack would have sized bands by label length, making a four-hour band look narrower than a one-hour one.",
+        "Covered the rules with 10 unit tests and 5 UI tests, including midnight-crossing shifts, the encryption round-trip and an automated accessibility audit.",
+      ],
+      stack: [
+        "Swift",
+        "SwiftUI",
+        "SwiftData",
+        "MVVM",
+        "Firebase",
+        "REST APIs",
+        "Keychain",
+        "XCTest",
+        "Swift Testing",
+      ],
+      repoAccess:
+        "University assessment repository, kept private under RMIT's academic integrity policy — happy to walk through the code or demo the app on request.",
+      featured: true,
+    },
     {
       slug: "venue-vendors",
       name: "Venue Vendors",
@@ -136,7 +167,20 @@ export const content: SiteContent = {
   skills: [
     {
       label: "Languages",
-      items: ["Java", "TypeScript", "JavaScript", "Python", "C", "C++", "SQL"],
+      items: [
+        "Java",
+        "TypeScript",
+        "JavaScript",
+        "Swift",
+        "Python",
+        "C",
+        "C++",
+        "SQL",
+      ],
+    },
+    {
+      label: "Mobile",
+      items: ["SwiftUI", "SwiftData", "MVVM", "Xcode", "XCTest"],
     },
     {
       label: "Web & full stack",
@@ -194,7 +238,6 @@ export const content: SiteContent = {
         "Data structures & algorithms",
         "Foundations of AI",
         "Cyber security fundamentals",
-        "iOS software engineering",
       ],
     },
   ],

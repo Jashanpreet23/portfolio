@@ -13,7 +13,7 @@ export function Projects() {
       id="projects"
       index="02 / Projects"
       title="Things I have built"
-      lede="Four projects from my degree, described by what I personally worked on. Where a project was built with a team, it says so."
+      lede="Five projects from my degree, described by what I personally worked on. Where a project was built with a team, it says so."
     >
       <div className="space-y-6">
         {featured.map((project, i) => (
