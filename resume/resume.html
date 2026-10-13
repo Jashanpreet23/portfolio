@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <title>Jashanpreet Singh — Resume</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 0;
+      }
+
+      :root {
+        --gold: #e0a526;
+        --ink: #111111;
+        --muted: #595959;
+        --rule: #111111;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: Helvetica, Arial, sans-serif;
+        color: var(--ink);
+        font-size: 7.8pt;
+        line-height: 1.3;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      /* The gold frame is the page edge, so it has to be painted by an
+         element rather than a @page border, which print engines drop. */
+      .page {
+        width: 210mm;
+        border: 7mm solid var(--gold);
+        background: #ffffff;
+        padding: 6mm 9mm 4mm;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        gap: 4mm;
+      }
+
+      .mark {
+        width: 7mm;
+        height: 11mm;
+        background: var(--ink);
+        flex: none;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 25pt;
+        font-weight: 700;
+        letter-spacing: 0.4pt;
+      }
+
+      .contact {
+        margin: 2.5mm 0 0;
+        font-size: 8pt;
+        color: var(--muted);
+      }
+
+      h2 {
+        margin: 3.6mm 0 0;
+        padding: 1.4mm 0;
+        font-size: 9.5pt;
+        font-weight: 700;
+        letter-spacing: 0.3pt;
+        border-top: 1.1mm solid var(--rule);
+        border-bottom: 0.35mm solid var(--rule);
+      }
+
+      h2 + * {
+        margin-top: 2.2mm;
+      }
+
+      p {
+        margin: 0;
+        text-align: justify;
+      }
+
+      .entry {
+        margin-top: 2.2mm;
+      }
+
+      .entry:first-of-type {
+        margin-top: 0;
+      }
+
+      .entry-title {
+        font-weight: 700;
+        font-size: 8.8pt;
+      }
+
+      .entry-meta {
+        color: var(--muted);
+        font-size: 7.8pt;
+        margin-top: 0.3mm;
+      }
+
+      ul {
+        margin: 1mm 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      li {
+        position: relative;
+        padding-left: 4.2mm;
+        margin-top: 0.9mm;
+        text-align: justify;
+      }
+
+      li::before {
+        content: "▪";
+        position: absolute;
+        left: 0.6mm;
+        top: -0.2mm;
+        color: var(--muted);
+      }
+
+      .skills div {
+        margin-top: 0.9mm;
+      }
+
+      .skills div:first-child {
+        margin-top: 0;
+      }
+
+      .skills b {
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <div class="mark"></div>
+        <h1>JASHANPREET SINGH</h1>
+      </header>
+      <p class="contact">
+        Melbourne, Victoria &nbsp;|&nbsp; +61 0468 370 723 &nbsp;|&nbsp;
+        jashanpreetsingh230106@gmail.com &nbsp;|&nbsp; github.com/Jashanpreet23
+        &nbsp;|&nbsp; jashanpreet.vercel.app
+      </p>
+
+      <h2>SUMMARY</h2>
+      <p>
+        Computer Science graduate (completing Nov 2026, RMIT) with hands-on
+        full-stack project experience across React, TypeScript, Node.js, SQL
+        Server and MongoDB, native iOS development in Swift and SwiftUI, and
+        cloud platforms including AWS and Azure, plus team-leadership
+        experience from a management role. A fast learner, comfortable across
+        the stack and in Agile teams, seeking a graduate software engineering
+        role where I can contribute from day one and keep growing.
+      </p>
+
+      <h2>EDUCATION</h2>
+      <div class="entry">
+        <div class="entry-title">
+          Bachelor of Computer Science, Major in Enterprise Systems Development
+          — RMIT University
+        </div>
+        <div class="entry-meta">Feb 2024 – Nov 2026 (expected)</div>
+      </div>
+      <div class="entry">
+        <div class="entry-title">
+          Certificates in Java Programming and C/C++
+        </div>
+        <div class="entry-meta">2023</div>
+      </div>
+
+      <h2>PROJECTS</h2>
+
+      <div class="entry">
+        <div class="entry-title">ShiftPay — Native iOS App</div>
+        <div class="entry-meta">
+          2026 · Swift · SwiftUI · SwiftData · MVVM · Firebase · REST APIs
+        </div>
+        <ul>
+          <li>
+            Built an iPhone app that prices a casual hospitality shift against
+            live Fair Work award rates, writing a pay engine that walks the
+            shift minute by minute and opens a new segment whenever the penalty
+            band changes — so a shift finishing at 2am is priced at the next
+            day's rates with no special-casing. Rates are fetched from the Fair
+            Work Commission's pay database and cached on device for offline use.
+          </li>
+          <li>
+            Persisted shifts with SwiftData behind a repository protocol,
+            encrypting each row with a Keychain-held key, implemented a custom
+            SwiftUI Layout sizing the shift timeline proportionally to hours,
+            and covered the award rules with 10 unit tests and 5 UI tests
+            including midnight-crossing shifts and an accessibility audit.
+          </li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-title">
+          Venue Vendors (VV) — Full-Stack Web Application
+        </div>
+        <div class="entry-meta">
+          2026 · React TS · Node &amp; Express · TypeORM · Cloud MS SQL Server ·
+          GraphQL · Render
+        </div>
+        <ul>
+          <li>
+            Built a multi-user (hirer / vendor / admin) venue-booking platform
+            with a functional React TS front-end and a Node &amp; Express +
+            TypeORM REST API backed by a Cloud MS SQL Server database, with
+            validation on both client and server, containerised with Docker and
+            shipped through a GitHub Actions CI/CD pipeline.
+          </li>
+          <li>
+            Developed a separate GraphQL admin dashboard with real-time
+            notifications via GraphQL subscriptions and data-visualisation
+            charts (bar, stacked bar, pie, line), and deployed all web services
+            on Render.
+          </li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-title">
+          Automated Mission Risk Assessment Engine
+        </div>
+        <div class="entry-meta">
+          2026 · RMIT Capstone (Group 36) — Backend Developer | Client: Timed
+          Automated Solutions
+        </div>
+        <ul>
+          <li>
+            Developed the backend air-risk assessment logic and integrated
+            real-time telemetry via MQTT, aligned to CASA/SORA aviation
+            regulations, on a React 19 / TypeScript / Vite app built in an
+            Agile team using Git.
+          </li>
+        </ul>
+      </div>
+
+      <h2>TECHNICAL SKILLS</h2>
+      <div class="skills">
+        <div>
+          <b>Programming Languages:</b> Java, Python, Swift, C, C++, JavaScript,
+          TypeScript
+        </div>
+        <div>
+          <b>Web &amp; Full Stack:</b> React, Node.js, HTML/CSS, Full Stack
+          Development
+        </div>
+        <div>
+          <b>Mobile:</b> SwiftUI, SwiftData, MVVM, Xcode, XCTest
+        </div>
+        <div>
+          <b>Databases:</b> SQL Server, MongoDB, Database Design &amp;
+          Applications
+        </div>
+        <div>
+          <b>DevOps &amp; Cloud:</b> CI/CD (GitHub Actions), Docker,
+          docker-compose, AWS, Azure, Cloud Deployment (Render)
+        </div>
+        <div>
+          <b>Software Engineering:</b> Agile Process &amp; Tools, Git, Software
+          Requirements, Systems Architecture &amp; Design
+        </div>
+        <div>
+          <b>Testing:</b> Software Testing, JUnit, XCTest, Maven, JMeter
+        </div>
+        <div>
+          <b>Foundations:</b> Data Structures &amp; Algorithms, Foundations of
+          AI, Cyber Security Fundamentals, Usability Engineering
+        </div>
+      </div>
+
+      <h2>EXPERIENCE</h2>
+      <div class="entry">
+        <div class="entry-title">McDonald's Australia</div>
+        <div class="entry-meta">
+          Department Manager | Oct 2025 – Present &nbsp;·&nbsp; promoted from
+          Crew Member (Apr 2024) through Crew Trainer, Trainee Manager and
+          Shift Manager
+        </div>
+        <ul>
+          <li>
+            Reduced stock variance and food waste, measured by monthly
+            stocktake results, by tightening ordering, running weekly counts
+            and owning month-end inventory reconciliation.
+          </li>
+          <li>
+            Led and developed a team of 25+, lifting crew training completion
+            and shift readiness by coaching staff and running structured
+            on-the-job development.
+          </li>
+          <li>
+            Optimised weekly rostering for 25+ staff to keep labour cost on
+            target, by scheduling to forecast demand and cutting avoidable
+            overtime.
+          </li>
+          <li>
+            Directed daily operations across kitchen and front counter to
+            consistently meet speed-of-service targets, by coordinating staff
+            and cash/EFTPOS handling across day and overnight shifts.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
